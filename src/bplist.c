@@ -271,24 +271,24 @@ bplist_add_rev(struct bplist *bpl, const char *rev, const char *sline)
 	if (kv)
 		return;
 
+	title = get_title(rev);
+	if (!title)
+		die("OOM");
+
 	if (sline) {
 		final = strdup(sline);
 	} else {
-		title = get_title(rev);
-		if (!title)
-			die("OOM");
-
 		final = calloc(256, 1);
 		if (!final)
 			die("OOM");
 
 		snprintf(final, 255, "%s %s", rev, title);
-		free(title);
 	}
 
 	io_trace("bplist add: %s\n", final);
 
 	line = _add_line(bpl, final, rev);
+	line->subject = title;
 
 	kv = calloc(1, sizeof(*kv));
 	if (!kv)
@@ -329,6 +329,8 @@ bplist_rem_rev(struct bplist *bpl, const char *rev)
 	kv->line->s = NULL;
 	free(kv->line->rev);
 	kv->line->rev = NULL;
+	free(kv->line->subject);
+	kv->line->subject = NULL;
 	free(kv->line);
 	kv->line = NULL;
 	free(kv);
@@ -349,6 +351,8 @@ void bplist_rem_all(struct bplist *bpl)
 		kv->line->s = NULL;
 		free(kv->line->rev);
 		kv->line->rev = NULL;
+		free(kv->line->subject);
+		kv->line->subject = NULL;
 		free(kv->line);
 		kv->line = NULL;
 		free(kv);

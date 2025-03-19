@@ -19,6 +19,7 @@
 struct bpline {
 	char *s;
 	char *rev;
+	char *subject;
 	long cdate;
 };
 
