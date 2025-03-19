@@ -279,6 +279,7 @@ readline_action_generator(const char *text, int state)
 		"write-attached-bplist",
 		"set-search-mode",
 		"map-commit",
+		"map-bplist",
 		"bplist-import",
 #define REQ_GROUP(help)
 #define REQ_(req, help)	#req
@@ -1114,6 +1115,14 @@ run_prompt_command(struct view *view, const char *argv[], bool blocking)
 			report("map-commit done: %ld commits mapped", n);
 		else
 			report("failed to map-commit %s", argv[1]);
+		redraw_view(view);
+	} else if (!strcmp(cmd, "map-bplist")) {
+		long n;
+		n = main_map_bplist(view);
+		if (n > 0)
+			report("map-bplist done: %ld commits mapped", n);
+		else
+			report("failed to map-bplist");
 		redraw_view(view);
 	} else if (!strcmp(cmd, "bplist-import")) {
 		long n;

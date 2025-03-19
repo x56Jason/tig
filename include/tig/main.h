@@ -56,6 +56,7 @@ void main_toggle_bplist(struct view *view, const char *commit_id);
 int main_write_attached_bplist(struct view *view, struct bplist *bpl, const char *fn);
 int main_write_bplist(struct view *view, const char *argv[]);
 long main_map_commit(struct view *view, const char *rev_range);
+long main_map_bplist(struct view *view);
 long main_bplist_import(struct view *view, const char *argv[]);
 
 extern struct view main_view;

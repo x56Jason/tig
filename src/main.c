@@ -567,6 +567,31 @@ main_map_commit(struct view *view, const char *rev_range)
 	return ctx.count;
 }
 
+static void
+map_one_bpline(struct bpline *bpline, void *data)
+{
+	struct map_commit_ctx *ctx = data;
+	struct view *view = ctx->view;
+	char *subject = bpline->subject;
+
+	string_trim(subject);
+	io_trace("map bpline: %s %s\n", bpline->rev, subject);
+
+	ctx->count += find_line_by_subject_do(view, subject, line_mark_bplist);
+}
+
+long
+main_map_bplist(struct view *view)
+{
+	struct map_commit_ctx ctx;
+
+	ctx.view = view;
+	ctx.count = 0;
+	bplist_for_each_do(&global_bplist, map_one_bpline, &ctx);
+
+	return ctx.count;
+}
+
 struct import_commit_ctx {
 	long count;
 	struct view *view;
