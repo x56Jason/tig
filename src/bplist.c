@@ -364,6 +364,16 @@ void bplist_rem_all(struct bplist *bpl)
 	bpl->saved = false;
 }
 
+void bplist_for_each_do(struct bplist *bpl, void (*bpline_func)(struct bpline *line, void *data), void *data)
+{
+	int i;
+
+	for (i = 0; i < bpl->nlines; i++) {
+		struct bpline *bpline = bpl->lines[i];
+		(*bpline_func)(bpline, data);
+	}
+}
+
 struct sort_ctx {
 	const char ***dst_argv;
 	const char **src_argv;
