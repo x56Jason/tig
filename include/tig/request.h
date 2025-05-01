@@ -92,6 +92,13 @@
 	REQ_(SELECT_ADD_BPLIST,	"Add select range to bplist"), \
 	REQ_(SELECT_DEL_BPLIST,	"Del select range from bplist"), \
 	REQ_(CLEAR_SELECT_RANGE,"Clear select range"), \
+	REQ_(TOGGLE_LINE_COLOR_1,	"Toggle line color 1"), \
+	REQ_(TOGGLE_LINE_COLOR_2,	"Toggle line color 2"), \
+	REQ_(TOGGLE_LINE_COLOR_3,	"Toggle line color 3"), \
+	REQ_(TOGGLE_LINE_COLOR_4,	"Toggle line color 4"), \
+	REQ_(TOGGLE_LINE_COLOR_5,	"Toggle line color 5"), \
+	REQ_(TOGGLE_LINE_COLOR_6,	"Toggle line color 6"), \
+	REQ_(TOGGLE_LINE_COLOR_7,	"Toggle line color 7"), \
 	REQ_(STOP_LOADING,	"Stop all loading views"), \
 	REQ_(SHOW_VERSION,	"Show version information"), \
 	REQ_(NONE,		"Do nothing")

@@ -50,6 +50,7 @@ struct line {
 	unsigned int graph_indent:1;
 	unsigned int search_result:1;
 	unsigned int bplist:1;
+	unsigned int color:3;
 
 	void *data;		/* User data */
 };

@@ -58,6 +58,7 @@ int main_write_bplist(struct view *view, const char *argv[]);
 long main_map_commit(struct view *view, const char *rev_range);
 long main_map_bplist(struct view *view);
 long main_bplist_import(struct view *view, const char *argv[]);
+void main_toggle_line_color(struct view *view, struct line *line, int color);
 
 extern struct view main_view;
 

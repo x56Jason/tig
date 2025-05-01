@@ -39,7 +39,7 @@ static const enum line_type palette_colors[] = {
 static bool
 line_type_is_override(enum line_type type)
 {
-	return type == LINE_MAIN_BP_MARK || type == LINE_SELECT_RANGE || type == LINE_BPLIST_SEARCH_LIMIT;
+	return type == LINE_MAIN_BP_MARK || type == LINE_SELECT_RANGE || type == LINE_BPLIST_SEARCH_LIMIT || (type >= LINE_LINE_COLOR_1 && type <= LINE_LINE_COLOR_7);
 }
 
 /*
@@ -556,6 +556,8 @@ view_column_draw(struct view *view, struct line *line, unsigned int lineno)
 		type = LINE_SELECT_RANGE;
 	else if (view->bplist_search_limit == view->pos.offset + lineno)
 		type = LINE_BPLIST_SEARCH_LIMIT;
+	else if (line->color != 0)
+		type = LINE_LINE_COLOR_1 + line->color - 1;
 	else if (column_data.id && line->bplist)
 		type = LINE_MAIN_BP_MARK;
 

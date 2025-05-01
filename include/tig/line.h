@@ -76,6 +76,13 @@ struct ref;
 	_(MAIN_BP_MARK,		""), \
 	_(SELECT_RANGE,		""), \
 	_(BPLIST_SEARCH_LIMIT,	""), \
+	_(LINE_COLOR_1,		""), \
+	_(LINE_COLOR_2,		""), \
+	_(LINE_COLOR_3,		""), \
+	_(LINE_COLOR_4,		""), \
+	_(LINE_COLOR_5,		""), \
+	_(LINE_COLOR_6,		""), \
+	_(LINE_COLOR_7,		""), \
 	_(STAT_NONE,		""), \
 	_(STAT_STAGED,		""), \
 	_(STAT_UNSTAGED,	""), \

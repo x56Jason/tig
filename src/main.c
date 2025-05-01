@@ -464,6 +464,14 @@ int main_write_bplist(struct view *view, const char *argv[])
 	return main_write_line_bplist(view, argv[i], !(mode & BPLIST_OP_REVERSE));
 }
 
+void main_toggle_line_color(struct view *view, struct line *line, int color)
+{
+	if (line->color == color)
+		line->color = 0;
+	else
+		line->color = color & 7;
+}
+
 static int
 find_line_by_subject_do(struct view *view, const char *subject, void (*line_func)(struct line *line))
 {
@@ -898,6 +906,16 @@ main_request(struct view *view, enum request request, struct line *line)
 
 	case REQ_ATTACH_BPLIST:
 		main_attach_bplist(view);
+		redraw_view(view);
+		break;
+	case REQ_TOGGLE_LINE_COLOR_1:
+	case REQ_TOGGLE_LINE_COLOR_2:
+	case REQ_TOGGLE_LINE_COLOR_3:
+	case REQ_TOGGLE_LINE_COLOR_4:
+	case REQ_TOGGLE_LINE_COLOR_5:
+	case REQ_TOGGLE_LINE_COLOR_6:
+	case REQ_TOGGLE_LINE_COLOR_7:
+		main_toggle_line_color(view, line, request - REQ_TOGGLE_LINE_COLOR_1 + 1);
 		redraw_view(view);
 		break;
 
