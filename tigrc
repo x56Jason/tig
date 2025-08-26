@@ -122,7 +122,7 @@ set quick-view-date-format	= "%Y-%m"
 set blame-view-date-format	= "%Y-%m"
 
 #set main-options = --max-count=1000
-set main-options = %(register:b) %(ref)
+#set main-options = %(register:b) %(ref)
 
 # User-defined commands
 # ---------------------
